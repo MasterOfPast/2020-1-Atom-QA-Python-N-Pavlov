@@ -7,7 +7,8 @@ class Test2:
             assert static_set.remove("z")
 
     def test_set_2(self, static_set):
-        assert len(static_set) < 7 or len(static_set) >= 7
+        with pytest.raises(TypeError):
+            print(static_set[-1])
 
     def test_set_3(self, static_set):
         result = static_set.copy()

@@ -12,10 +12,12 @@ class Test3:
     def test_dict_3(self, static_dict):
         assert list(static_dict.values())[1] in static_dict
 
-    def test_dict_4(self, random_dict):
-        assert random_dict[5] > 0 or random_dict[5] <= 0
+    def test_dict_4(self, random_int):
+        with pytest.raises(KeyError):
+            dict_test = {"q": "we", "r": "ty", "ui": "o"}
+            assert dict_test[random_int]
 
-    @pytest.mark.parametrize("i", [{3: 2, 7: 8, 10: 12}, {2: 6},
+    @pytest.mark.parametrize("i", [{3: 2, 7: 8, 10: 12}, {2: 3},
                                    {3: 2, 7: 15}])
     def test_dict_5(self, i):
-        assert 3 in i or 3 not in i
+        assert 3 in i or 3 in i.values()
