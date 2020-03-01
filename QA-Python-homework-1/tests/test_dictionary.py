@@ -20,4 +20,7 @@ class Test3:
     @pytest.mark.parametrize("i", [{3: 2, 7: 8, 10: 12}, {2: 3},
                                    {3: 2, 7: 15}])
     def test_dict_5(self, i):
-        assert 3 in i or 3 in i.values()
+        if 3 in i:
+            assert i.get(3) is not None
+        else:
+            assert i.get(3) is None

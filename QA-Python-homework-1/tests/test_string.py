@@ -9,6 +9,9 @@ class Test4:
     def test_string_2(self, i):
         if i[0].isalpha():
             assert i.istitle()
+        else:
+            with pytest.raises(AssertionError):
+                assert i.istitle()
 
     def test_string_3(self, static_string):
         with pytest.raises(AssertionError):
@@ -20,4 +23,4 @@ class Test4:
 
     def test_string_5(self, random_string):
         random_string += "y"
-        assert "y" in random_string
+        assert "y" == random_string[-1]

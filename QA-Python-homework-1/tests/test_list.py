@@ -5,9 +5,13 @@ class Test1:
     def test_list_1(self, static_list):
         assert sum(static_list) == 10
 
-    @pytest.mark.parametrize("i", [[1, 2, 5], [3, 4, 5, 2], [2, 3, 6]])
+    @pytest.mark.parametrize("i", [[1, 2, 5], [3, 4, 5, 9], [7, 3, 6]])
     def test_list_2(self, i):
-        assert 2 in i
+        if 2 in i:
+            assert i.index(2) is not None
+        else:
+            with pytest.raises(ValueError):
+                assert i.index(2) is not None
 
     def test_list_3(self, static_list):
         element = static_list[-1]
