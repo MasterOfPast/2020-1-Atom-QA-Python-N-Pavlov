@@ -35,7 +35,6 @@ class MainPage(BasePage):
         self.click(self.locators.SECOND_CHECKBOX)
         self.click(self.locators.BUTTON_CREATE_OPTION)
         self.click(self.locators.CREATE_SEGMENT)
-        time.sleep(7)
 
     def find_selectors(self, locator):
         self.click(self.locators.CLICK_ELEMENT)

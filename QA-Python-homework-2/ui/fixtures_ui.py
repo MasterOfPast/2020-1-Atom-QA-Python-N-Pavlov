@@ -60,8 +60,9 @@ def authorization(driver):
 
 @pytest.fixture(scope="function")
 def download_file():
-    my_path = os.getcwd()
-    path = os.path.join(my_path, "QA-Python-homework-2", "some_data", "Concept_Car.jpg")
+    fixtures_path = os.path.dirname(__file__)
+    path = os.path.join(fixtures_path, "..", "some_data", "Concept_Car.jpg")
+    path = os.path.abspath(path)
     return path
 
 
