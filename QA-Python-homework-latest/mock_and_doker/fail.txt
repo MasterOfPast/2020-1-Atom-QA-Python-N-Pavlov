@@ -1,0 +1,16 @@
+docker run -p 1000:1000 --link mysql1:mysql --link vk:vk myapp /app/myapp -v .:/ --config=/CONFIG.txt
+
+
+
+docker run --name mysql1 -e MYSQL_ROOT_PASSWORD=a1b2c3 -p 3306:3306 -d mysql:latest
+docker exec -it mysql1 mysql -uroot -p
+docker run --name vk -p 5000:5000 -d vk_api:latest
+docker build -t vk_api .
+
+
+docker run -v /c/Users/neket/conf:/root/conf -p 1000:1000 --link mysql1:mysql --link vk:vk myapp ./myapp --config=/root/conf/CONFIG.txt
+./myapp --config=/root/conf/CONFIG.txt
+
+mysql -h 192.168.99.100 -u root -p 
+
+pytest -s -v -n 8 -m main --alluredir ./tmp/allure .
